@@ -404,8 +404,4 @@ class MxPopupManager {
   }
 }
 
-// init on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  window.mxPopup = new MxPopupManager();
-});
-  
+
