@@ -188,9 +188,17 @@ requireLogin();
                 </tr>
             </thead>
             <tbody id="blog-table-body">
-                <!-- Rows will be populated by JS -->
+                <tr>
+                    <td colspan="5" style="text-align: center; padding: 40px;">
+                        <div class="mx-loader" style="display: inline-block; width: 30px; height: 30px; border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                        <p style="margin-top: 10px; color: #666;">Loading posts...</p>
+                    </td>
+                </tr>
             </tbody>
         </table>
+        <style>
+            @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        </style>
     </div>
 
     <!-- Add/Edit Modal -->
@@ -287,17 +295,30 @@ requireLogin();
             }
         });
 
-        // Wait for init
-        setTimeout(() => {
+        // Initialize and Render
+        (async function() {
+            await blogManager.init(); // Ensure data is fetched
             renderTable();
             if (!PERMISSIONS.create) {
-                document.querySelector('button[onclick="openModal()"]').style.display = 'none';
+                const addBtn = document.querySelector('button[onclick="openModal()"]');
+                if (addBtn) addBtn.style.display = 'none';
             }
-        }, 100); // Small delay to ensure data load from JSON if first time
+        })();
 
         function renderTable() {
             const tbody = document.getElementById('blog-table-body');
             const blogs = blogManager.getAll();
+
+            if (blogs.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; padding: 40px; color: #666;">
+                            No blog posts found. Click "Add New Post" to create one.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
 
             tbody.innerHTML = blogs.map(blog => `
                 <tr>

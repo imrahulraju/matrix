@@ -45,7 +45,7 @@ foreach ($allBlogs as $b) {
 </head>
 
 <body>
-    <header class="mx-header">
+    <header class="mx-header mx-header--inner">
         <div class="mx-header__container">
             <!-- Logo -->
             <div class="mx-header__logo">
@@ -109,6 +109,7 @@ foreach ($allBlogs as $b) {
                             <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $encodedUrl; ?>" target="_blank" class="mx-blog-detail__share-link">Facebook</a>
                             <a href="https://twitter.com/intent/tweet?url=<?php echo $encodedUrl; ?>&text=<?php echo $encodedTitle; ?>" target="_blank" class="mx-blog-detail__share-link">Twitter</a>
                             <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $encodedUrl; ?>&title=<?php echo $encodedTitle; ?>" target="_blank" class="mx-blog-detail__share-link">LinkedIn</a>
+                            <a href="https://wa.me/?text=<?php echo $encodedTitle . ' ' . $encodedUrl; ?>" target="_blank" class="mx-blog-detail__share-link">WhatsApp</a>
                         </div>
                     </div>
                 </div>

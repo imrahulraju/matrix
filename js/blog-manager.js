@@ -1,0 +1,120 @@
+/**
+ * Blog Manager - Handles Data Persistence (LocalStorage + JSON) and Auth
+ */
+
+const BLOG_STORAGE_KEY = 'mx_blog_data';
+const AUTH_STORAGE_KEY = 'mx_admin_session';
+const DATA_URL = 'assets/data/blogs.json';
+
+class BlogManager {
+    constructor() {
+        this.blogs = [];
+        this.init();
+    }
+
+    async init() {
+        try {
+            const response = await fetch('/api/blogs.php');
+            if (response.ok) {
+                this.blogs = await response.json();
+                // Sync with local storage for fallback/faster read on other pages if needed
+                localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(this.blogs));
+            } else {
+                console.error('Failed to fetch blogs from server');
+                // Fallback to local storage if server fails
+                const storedData = localStorage.getItem(BLOG_STORAGE_KEY);
+                if (storedData) this.blogs = JSON.parse(storedData);
+            }
+        } catch (error) {
+            console.error('Error loading blog data:', error);
+            // Fallback
+            const storedData = localStorage.getItem(BLOG_STORAGE_KEY);
+            if (storedData) this.blogs = JSON.parse(storedData);
+        }
+    }
+
+    async saveToStorage() {
+        // Save to LocalStorage (for immediate UI updates/backup)
+        localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(this.blogs));
+
+        // Save to Server (Persistent)
+        try {
+            await fetch('/api/blogs.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(this.blogs)
+            });
+        } catch (error) {
+            console.error('Error saving to server:', error);
+            alert('Failed to save changes to server. Check console.');
+        }
+    }
+
+    getAll() {
+        return this.blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+
+    getById(id) {
+        return this.blogs.find(blog => blog.id == id);
+    }
+
+    async create(blog) {
+        const newBlog = {
+            id: Date.now(), // Simple ID generation
+            ...blog,
+            date: new Date().toISOString().split('T')[0] // Current date YYYY-MM-DD
+        };
+        this.blogs.unshift(newBlog);
+        await this.saveToStorage();
+        return newBlog;
+    }
+
+    async update(id, updatedFields) {
+        const index = this.blogs.findIndex(blog => blog.id == id);
+        if (index !== -1) {
+            this.blogs[index] = { ...this.blogs[index], ...updatedFields };
+            await this.saveToStorage();
+            return this.blogs[index];
+        }
+        return null;
+    }
+
+    async delete(id) {
+        this.blogs = this.blogs.filter(blog => blog.id != id);
+        await this.saveToStorage();
+    }
+
+    // Auth Methods
+    login(username, password) {
+        // Hardcoded credentials for demo purposes
+        if (username === 'admin' && password === 'admin123') {
+            const session = {
+                user: username,
+                token: Date.now().toString()
+            };
+            localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session));
+            return true;
+        }
+        return false;
+    }
+
+    logout() {
+        localStorage.removeItem(AUTH_STORAGE_KEY);
+        window.location.href = 'login.html';
+    }
+
+    isAuthenticated() {
+        return !!localStorage.getItem(AUTH_STORAGE_KEY);
+    }
+
+    checkAuth() {
+        if (!this.isAuthenticated()) {
+            window.location.href = 'login.html';
+        }
+    }
+}
+
+// Export instance
+const blogManager = new BlogManager();

@@ -25,11 +25,51 @@ $currentBlogs = array_slice($allBlogs, $offset, $perPage);
     <title>Blog - Metrix</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
 
+    <style>
+        /* Preloader */
+        #page-preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.5s ease;
+        }
+        .mx-loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #831bee;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('page-preloader');
+            if (loader) {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; }, 500);
+            }
+        });
+    </script>
     <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <header class="mx-header">
+    <div id="page-preloader">
+        <div class="mx-loader"></div>
+        <p style="margin-top: 15px; color: #666; font-family: sans-serif;">Loading...</p>
+    </div>
+
+    <header class="mx-header mx-header--inner">
         <div class="mx-header__container">
             <!-- Logo -->
             <div class="mx-header__logo">
