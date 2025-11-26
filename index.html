@@ -30,7 +30,8 @@
 
             <div class="mx-header__right-area-mobile">
                 <!-- Login Button (Desktop Only) -->
-                <a href="https://bridge.tourmatrix.in/index.php?r=user%2Flogin" target="_blank" class="mx-btn mx-btn--small">Login/Sign Up</a>
+                <a href="https://bridge.tourmatrix.in/index.php?r=user%2Flogin" target="_blank"
+                    class="mx-btn mx-btn--small">Login/Sign Up</a>
 
                 <!-- Hamburger Menu Toggle -->
                 <button class="mx-header__menu-toggle">
@@ -119,8 +120,8 @@
                     </h2>
                 </div>
                 <div class="mx-banner__special-btn">
-                    <div class="mx-btn-box" data-animate="true" data-animate-speed="0.5" data-animate-duration="1.4"
-                        data-mx-target="videoPopup1">
+                    <div class="mx-btn-box mx-modal-trigger" data-animate="true" data-animate-speed="0.5"
+                        data-animate-duration="1.4" data-modal-target="#video-modal-1">
                         <div class="mx-btn-box__icon">
                             <img src="assets/images/play.svg" alt="" />
                         </div>
@@ -154,7 +155,7 @@
                 <div class="mx-why-Matrix__left">
                     <div class="mx-why-Matrix__animation">
                         <div class="mx-why-Matrix__animation-item">
-                            <img src="assets/images/scroll-img.jpg" alt="">
+                            <img src="assets/images/scroll-img.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -960,12 +961,7 @@
     </section>
     <section class="mx-reviews mx-bg-light-blue">
         <div class="mx-container">
-            <h2 class="mx-title">Global Reach & Support</h2>
-            <p class="mx-subtitle">
-                Our platform is designed to support tour operators worldwide, with
-                multi-currency and multi-language capabilities, ensuring seamless
-                operations across different regions.
-            </p>
+            <h2 class="mx-title">Client Reviews</h2>
 
 
             <div class="splide" id="mx-review-slide">
@@ -1104,7 +1100,7 @@
                                 </div>
                                 <div class="mx-card__user"></div>
                                 <img src="assets/images/user.png" alt="">
-                                    <h5>Andrews Mathew </h5>
+                                <h5>Andrews Mathew </h5>
                                 <span>Company Name</span>
                             </div>
                         </div>
@@ -1137,7 +1133,7 @@
                                 </div>
                                 <div class="mx-card__user"></div>
                                 <img src="assets/images/user.png" alt="">
-                                    <h5>Andrews Mathew </h5>
+                                <h5>Andrews Mathew </h5>
                                 <span>Company Name</span>
                             </div>
                         </div>
@@ -1563,7 +1559,7 @@
                 <img src="assets/images/mission-1.png" alt="">
                 <img src="assets/images/mission-3.png" alt="">
 
-                <h3>Powered by</h3>
+                <h3 class="mx-mt-5 mx-mb-2">Powered by</h3>
                 <img src="assets/images/mission-2.png" alt="">
 
             </div>
@@ -1622,26 +1618,24 @@
         </div>
     </section>
 
-    <!-- Popup 1 -->
-    <div id="videoPopup1" class="mx-popup" role="dialog" aria-modal="true" aria-labelledby="mx-title-1" data-mx-popup>
-        <div class="mx-popup__overlay" data-mx-close></div>
-        <div class="mx-popup__content" role="document" tabindex="-1">
-            <div class="mx-popup__header">
-                <h3 id="mx-title-1" class="mx-popup__title">
-                    Introducing -Tour Matrix | The Smart Travel Software</h3>
-                <button class="mx-popup__close" title="Close" data-mx-close aria-label="Close popup">✕</button>
-            </div>
-            <div class="mx-popup__body">
-                <div class="mx-popup__videowrap">
-                    <!-- Important: add enablejsapi=1 if you want JS control; we unload the iframe on close -->
-                    <iframe class="mx-popup__iframe" data-mx-iframe
-                        src="https://www.youtube.com/embed/Y23dN3JZrcE?list=RDY23dN3JZrcE"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen title="YouTube video popup 1"></iframe>
-                </div>
+    <!-- Modal -->
+    <div id="video-modal-1" class="mx-modal" aria-hidden="true">
+        <div class="mx-modal-overlay" data-modal-close></div>
+        <div class="mx-modal-content">
+            <button class="mx-modal-close" data-modal-close>&times;</button>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/PcYtUXpUIQU?autoplay=0&rel=0" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
             </div>
         </div>
     </div>
+
+
+
+
 
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
