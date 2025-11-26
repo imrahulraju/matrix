@@ -930,7 +930,7 @@ ol {
 
   p {
     font-size: 18px;
-    color: #b0b0b0;
+    color: $mx-color-primary;
   }
 }
 
@@ -1010,6 +1010,11 @@ ol {
     h2,
     p {
       text-align: left;
+    }
+  }
+  .mx-enq-box {
+    h4 {
+      color: $mx-color-primary;
     }
   }
 }

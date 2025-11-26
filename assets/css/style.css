@@ -768,12 +768,9 @@ ol {
 }
 .mx-counter p {
   font-size: 18px;
-  color: #b0b0b0;
+  color: #1e2339;
 }
 
-.mx-features {
-  padding: 80px 0;
-}
 .mx-features__wrapper {
   display: flex;
   gap: 24px;
@@ -813,6 +810,9 @@ ol {
 .mx-features .mx-card:hover svg path {
   stroke: #ffffff;
 }
+.mx-features {
+  padding: 80px 0;
+}
 
 .mx-variants {
   padding: 80px 0;
@@ -839,6 +839,9 @@ ol {
 .mx-variants .mx-card h2,
 .mx-variants .mx-card p {
   text-align: left;
+}
+.mx-variants .mx-enq-box h4 {
+  color: #1e2339;
 }
 
 .mx-global {
@@ -1122,7 +1125,6 @@ ol {
   border-radius: 12px;
   overflow: hidden;
   position: relative;
-  margin-bottom: 20px;
 }
 .mx-faq .mx-accordion__item::before {
   content: "";
@@ -1137,6 +1139,9 @@ ol {
   pointer-events: none;
   z-index: 0;
   opacity: 0.6;
+}
+.mx-faq .mx-accordion__item {
+  margin-bottom: 20px;
 }
 .mx-faq .mx-accordion__item:last-child {
   border-bottom: none;
@@ -1405,7 +1410,6 @@ ol {
   border-radius: 12px;
   cursor: pointer;
   position: relative;
-  width: 378px;
 }
 .mx-btn-box::before {
   content: "";
@@ -1420,6 +1424,9 @@ ol {
   pointer-events: none;
   z-index: 0;
   opacity: 0.6;
+}
+.mx-btn-box {
+  width: 378px;
 }
 @media (max-width: 768px) {
   .mx-btn-box {
@@ -1459,7 +1466,6 @@ ol {
   background: rgba(255, 255, 255, 0.09);
   border-radius: 16px;
   position: relative;
-  padding: 16px 24px;
 }
 .mx-card-number::before {
   content: "";
@@ -1474,6 +1480,9 @@ ol {
   pointer-events: none;
   z-index: 0;
   opacity: 0.6;
+}
+.mx-card-number {
+  padding: 16px 24px;
 }
 .mx-card-number::before {
   border-radius: 16px;
