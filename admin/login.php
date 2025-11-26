@@ -113,9 +113,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <button type="submit" class="mx-btn mx-btn-full">Login</button>
         </form>
-        <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #666;">
+        <!-- <p style="text-align: center; margin-top: 20px; font-size: 14px; color: #666;">
             Demo Credentials: superadmin / admin123
-        </p>
+        </p> -->
     </div>
 
 </body>

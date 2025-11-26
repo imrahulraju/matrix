@@ -13,13 +13,26 @@
         ]
     },
     {
-        "id": 1764161582,
-        "username": "rahul",
-        "password": "$2y$12$RDi0GPjy37xnub.m.Rmgx.nWQmOeDhu7I9ZXcb92mO342fpKz404.",
+        "id": 1764171209,
+        "username": "superadmin2",
+        "password": "$2y$10$iFWxrZ2qw6MgcXBC06UUT.n8kMiNxikdbViKKWrF46wfK6rX9nE0i",
         "role": "editor",
         "permissions": [
             "create",
-            "update"
+            "update",
+            "delete",
+            "manage_users"
+        ]
+    },
+    {
+        "id": 1764171235,
+        "username": "rahul",
+        "password": "$2y$10$1MKs.glG\/85\/M\/mgS7b4UOURnl5GL0wvHu8tiGs8N9HrFbs2hqS1e",
+        "role": "editor",
+        "permissions": [
+            "create",
+            "update",
+            "delete"
         ]
     }
 ]
