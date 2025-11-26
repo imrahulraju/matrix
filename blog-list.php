@@ -78,12 +78,13 @@ $currentBlogs = array_slice($allBlogs, $offset, $perPage);
 
             <!-- Navigation (used for both mobile & desktop) -->
             <ul class="mx-header__nav">
-                <li><a href="index.html" class="mx-header__nav-item">Home</a></li>
-                <li><a href="index.html#challenges" class="mx-header__nav-item">Challenges</a></li>
-                <li><a href="index.html#features" class="mx-header__nav-item">Features</a></li>
-                <li><a href="blog-list.php" class="mx-header__nav-item">Blog <span
+                <li><a href="#" class="mx-header__nav-item">Home</a></li>
+                <li><a href="#challenges" class="mx-header__nav-item">Challenges</a></li>
+                <li><a href="#features" class="mx-header__nav-item">Features</a></li>
+                <li><a href="#contact-us" class="mx-header__nav-item">Software Updates <span
                             class="mx-header__nav-item-info"></span></a></li>
-                <li><a href="index.html#contact-us" class="mx-header__nav-item">Contact Us</a></li>
+                            <li><a href="blog-list.php" class="mx-header__nav-item">Blogs</a></li>
+                <li><a href="#contact-us" class="mx-header__nav-item">Contact Us</a></li>
             </ul>
 
             <div class="mx-header__right-area-mobile">
