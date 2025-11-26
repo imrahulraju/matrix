@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1764162487152,
+        "title": "tet",
+        "category": "Technology",
+        "image": "assets\/images\/solution--1.jpg",
+        "excerpt": "casc",
+        "content": "<p>avadsv<\/p>",
+        "date": "2025-11-26"
+    },
+    {
+        "id": 1764157888698,
+        "title": "test 2",
+        "category": "Technology",
+        "image": "assets\/images\/solution--1.jpg",
+        "excerpt": "acasc",
+        "content": "<p>acasc<\/p>",
+        "date": "2025-11-26"
+    },
+    {
+        "id": 1764155457430,
+        "title": "test",
+        "category": "Technology",
+        "image": "assets\/images\/solution--1.jpg",
+        "excerpt": "sacasc",
+        "content": "<p>acasca<\/p>",
+        "date": "2025-11-26"
+    }
+]
