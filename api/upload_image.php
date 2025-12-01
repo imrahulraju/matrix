@@ -16,7 +16,10 @@ if (!isset($_FILES['image']) || $_FILES['image']['error'] !== UPLOAD_ERR_OK) {
 }
 
 $file = $_FILES['image'];
-$uploadDir = '../assets/images/uploads/';
+$uploadDir = __DIR__ . '/../assets/images/uploads/';
+if (!file_exists($uploadDir)) {
+    mkdir($uploadDir, 0777, true);
+}
 
 // Validate file type
 $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];

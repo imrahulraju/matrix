@@ -271,6 +271,9 @@ requireLogin();
 
     <!-- Quill JS -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        window.API_BASE_URL = '../api/';
+    </script>
     <script src="../assets/js/blog-manager.js"></script>
     <script>
         // Pass permissions and user to JS

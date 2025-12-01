@@ -4,7 +4,8 @@
 
 const BLOG_STORAGE_KEY = 'mx_blog_data';
 const AUTH_STORAGE_KEY = 'mx_admin_session';
-const DATA_URL = 'assets/data/blogs.json';
+const API_BASE_URL = window.API_BASE_URL || 'api/';
+const DATA_URL = API_BASE_URL + 'blogs.json';
 
 class BlogManager {
     constructor() {
@@ -14,7 +15,7 @@ class BlogManager {
 
     async init() {
         try {
-            const response = await fetch('/api/blogs.php');
+            const response = await fetch(`${API_BASE_URL}blogs.php`);
             if (response.ok) {
                 this.blogs = await response.json();
                 // Sync with local storage for fallback/faster read on other pages if needed
@@ -39,7 +40,7 @@ class BlogManager {
 
         // Save to Server (Persistent)
         try {
-            await fetch('/api/blogs.php', {
+            await fetch(`${API_BASE_URL}blogs.php`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
