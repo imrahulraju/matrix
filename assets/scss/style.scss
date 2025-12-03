@@ -722,6 +722,7 @@ ol {
     padding-left: 40px;
 
     @include mobile {
+      margin-top: 20px;
       padding-left: 0;
     }
   }
@@ -749,6 +750,11 @@ ol {
     background-size: 100%;
     position: relative;
 
+    @include mobile {
+      width: 278px;
+      height: 321px;
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -770,6 +776,11 @@ ol {
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    @include mobile {
+      width: 212px;
+      height: 291px;
+    }
 
     &-item {
       position: absolute;
@@ -855,17 +866,12 @@ ol {
 
     img {
       width: 100%;
-      border-radius: 16px;
       display: none;
-      height: 100%;
-      object-fit: cover;
-      object-position: left;
+      height: auto;
     }
 
     &--item {
       width: 100%;
-      border: 6px solid #ffffff;
-      border-radius: 26px;
       height: 450px;
       opacity: 0;
       transition: all 0.4s;
@@ -1012,6 +1018,7 @@ ol {
       text-align: left;
     }
   }
+
   .mx-enq-box {
     h4 {
       color: $mx-color-primary;
@@ -1476,6 +1483,11 @@ ol {
       display: block;
       max-width: 160px;
       margin-bottom: 14px;
+
+      @include mobile {
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
     @include mobile {
@@ -1498,6 +1510,10 @@ ol {
     border-radius: 40px;
     display: flex;
     flex-direction: column;
+
+    @include mobile {
+      margin-bottom: 20px;
+    }
 
     img {
       width: 100%;
@@ -1783,6 +1799,8 @@ ol {
 
   &--list {
     padding-left: 50px;
+    padding-top: 16px;
+    padding-bottom: 16px;
     position: relative;
     margin-bottom: 24px;
     border-radius: 0;
@@ -2535,4 +2553,26 @@ ol {
       }
     }
   }
+}
+
+.mx-accordion--collapsed {
+  max-height: 260px;
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    left: 0;
+    background: linear-gradient(to bottom, transparent, #20253d);
+  }
+}
+
+.mx-showmore-btn {
+  display: block;
+  width: 160px;
+  margin: 18px auto;
 }

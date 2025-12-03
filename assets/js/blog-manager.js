@@ -17,11 +17,20 @@ class BlogManager {
         try {
             const response = await fetch(`${API_BASE_URL}blogs.php`);
             if (response.ok) {
-                this.blogs = await response.json();
-                // Sync with local storage for fallback/faster read on other pages if needed
-                localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(this.blogs));
+                const text = await response.text();
+                try {
+                    this.blogs = JSON.parse(text);
+                    // Sync with local storage for fallback/faster read on other pages if needed
+                    localStorage.setItem(BLOG_STORAGE_KEY, JSON.stringify(this.blogs));
+                } catch (e) {
+                    console.error('Failed to parse blogs JSON:', e);
+                    console.error('Server response:', text);
+                    // Fallback to local storage if server response is invalid
+                    const storedData = localStorage.getItem(BLOG_STORAGE_KEY);
+                    if (storedData) this.blogs = JSON.parse(storedData);
+                }
             } else {
-                console.error('Failed to fetch blogs from server');
+                console.error('Failed to fetch blogs from server. Status:', response.status);
                 // Fallback to local storage if server fails
                 const storedData = localStorage.getItem(BLOG_STORAGE_KEY);
                 if (storedData) this.blogs = JSON.parse(storedData);
@@ -40,16 +49,29 @@ class BlogManager {
 
         // Save to Server (Persistent)
         try {
-            await fetch(`${API_BASE_URL}blogs.php`, {
+            const response = await fetch(`${API_BASE_URL}blogs.php`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(this.blogs)
             });
+
+            if (!response.ok) {
+                const text = await response.text();
+                console.error('Server Error Response:', text);
+                throw new Error(`Server responded with ${response.status}: ${text}`);
+            }
+
+            const result = await response.json();
+            if (!result.success) {
+                throw new Error(result.error || 'Unknown error');
+            }
+
+            console.log('Data saved to server successfully');
         } catch (error) {
             console.error('Error saving to server:', error);
-            alert('Failed to save changes to server. Check console.');
+            alert('Failed to save changes to server. \nError: ' + error.message);
         }
     }
 

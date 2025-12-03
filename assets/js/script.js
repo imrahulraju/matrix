@@ -361,3 +361,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+// faq
+
+document.addEventListener("DOMContentLoaded", () => {
+  const accordion = document.querySelector(".mx-accordion");
+  const btn = document.querySelector(".mx-showmore-btn");
+
+  if (!accordion || !btn) return;
+
+  let expanded = false;
+
+  accordion.classList.add("mx-accordion--collapsed");
+
+  btn.addEventListener("click", () => {
+    expanded = !expanded;
+
+    if (expanded) {
+      accordion.classList.remove("mx-accordion--collapsed");
+      btn.textContent = "Show Less";
+    } else {
+      accordion.classList.add("mx-accordion--collapsed");
+      btn.textContent = "Show More";
+    }
+  });
+});
+
+
+

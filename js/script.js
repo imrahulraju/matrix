@@ -361,3 +361,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// FAQ showmore show less
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.querySelector(".mx-showmore-btn");
+  const faqSection = document.querySelector(".mx-faq");
+
+  if (!btn || !faqSection) return;
+
+  btn.addEventListener("click", () => {
+    faqSection.classList.toggle("is-active");
+  });
+});
