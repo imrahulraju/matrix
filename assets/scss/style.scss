@@ -288,6 +288,14 @@ ol {
     img {
       width: 100%;
     }
+
+    &-dark {
+      display: none;
+    }
+
+    &-white {
+      display: block;
+    }
   }
 
   &__nav {
@@ -436,6 +444,14 @@ ol {
 
   &.is-scrolling {
     background: $mx-color-white;
+
+    .mx-header__logo-dark {
+      display: block;
+    }
+
+    .mx-header__logo-white {
+      display: none;
+    }
   }
 
   &--inner {
@@ -740,7 +756,7 @@ ol {
   }
 
   &__left {
-    width: 380px;
+    width: 470px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -771,8 +787,8 @@ ol {
 
   &__animation {
     position: relative;
-    width: 300px; // container width
-    height: 400px; // visible height
+    width: 340px;
+    height: 454px;
     overflow: hidden;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -847,7 +863,7 @@ ol {
 
   &__content {
     width: 50%;
-    padding-right: 80px;
+    padding-right: 30px;
 
     @include mobile {
       width: 100%;
@@ -858,11 +874,15 @@ ol {
 
   &__image {
     position: relative;
-    max-width: 560px;
+    max-width: 620px;
     display: flex;
     align-items: center;
     height: 100%;
     width: 100%;
+
+    @include mobile {
+      padding-top: 70%;
+    }
 
     img {
       width: 100%;
@@ -2575,4 +2595,4 @@ ol {
   display: block;
   width: 160px;
   margin: 18px auto;
-}
+}@import 'whatsapp';

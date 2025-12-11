@@ -1,5 +1,15 @@
 [
     {
+        "id": 1765440404531,
+        "title": "azaz",
+        "category": "Operations",
+        "image": "assets\/images\/solution--1.jpg",
+        "excerpt": "zazsazz",
+        "content": "<p>azaz<\/p>",
+        "author": "rahul",
+        "date": "2025-12-11"
+    },
+    {
         "id": 1764163801619,
         "title": "jvsckjasvcajschvasc",
         "category": "Operations",
@@ -146,5 +156,4 @@
         "author": "rahul",
         "date": "2025-11-26"
     }
-            
 ]

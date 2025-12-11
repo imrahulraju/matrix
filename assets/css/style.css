@@ -187,6 +187,12 @@ ol {
 .mx-header__logo img {
   width: 100%;
 }
+.mx-header__logo-dark {
+  display: none;
+}
+.mx-header__logo-white {
+  display: block;
+}
 @media (max-width: 768px) {
   .mx-header__nav {
     display: none;
@@ -320,6 +326,12 @@ ol {
 }
 .mx-header.is-scrolling {
   background: #ffffff;
+}
+.mx-header.is-scrolling .mx-header__logo-dark {
+  display: block;
+}
+.mx-header.is-scrolling .mx-header__logo-white {
+  display: none;
 }
 .mx-header--inner:not(.is-scrolling) .mx-header__nav-item {
   color: #ffffff;
@@ -594,7 +606,7 @@ ol {
   }
 }
 .mx-why-Matrix__left {
-  width: 380px;
+  width: 470px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -624,8 +636,8 @@ ol {
 }
 .mx-why-Matrix__animation {
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 340px;
+  height: 454px;
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -697,7 +709,7 @@ ol {
 }
 .mx-solution__content {
   width: 50%;
-  padding-right: 80px;
+  padding-right: 30px;
 }
 @media (max-width: 768px) {
   .mx-solution__content {
@@ -708,11 +720,16 @@ ol {
 }
 .mx-solution__image {
   position: relative;
-  max-width: 560px;
+  max-width: 620px;
   display: flex;
   align-items: center;
   height: 100%;
   width: 100%;
+}
+@media (max-width: 768px) {
+  .mx-solution__image {
+    padding-top: 70%;
+  }
 }
 .mx-solution__image img {
   width: 100%;
@@ -2249,6 +2266,51 @@ ol {
   display: block;
   width: 160px;
   margin: 18px auto;
+}
+
+.mx-whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 20px 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+}
+.mx-whatsapp-float:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+.mx-whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+}
+.mx-whatsapp-float span {
+  font-size: 16px;
+  color: #fff;
+}
+@media (max-width: 768px) {
+  .mx-whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    padding: 0;
+  }
+  .mx-whatsapp-float span {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

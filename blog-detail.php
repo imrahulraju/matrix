@@ -38,7 +38,26 @@ foreach ($allBlogs as $b) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><?php echo htmlspecialchars($blog['title']); ?> - Metrix Blog</title>
+    <title><?php echo htmlspecialchars($blog['title']); ?> - Tour Matrix Blog</title>
+    <meta name="description" content="<?php echo htmlspecialchars($blog['title']); ?>. Read more on Tour Matrix Blog about travel technology and tour operations.">
+    <meta name="keywords" content="<?php echo htmlspecialchars($blog['title']); ?>, Tour Matrix Blog, Travel Tech, Tour Operator Software">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+    <meta property="og:title" content="<?php echo htmlspecialchars($blog['title']); ?> - Tour Matrix Blog">
+    <meta property="og:description" content="<?php echo htmlspecialchars($blog['title']); ?>. Read more on Tour Matrix Blog about travel technology and tour operations.">
+    <meta property="og:image" content="<?php echo htmlspecialchars($blog['image']); ?>">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="<?php echo (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>">
+    <meta property="twitter:title" content="<?php echo htmlspecialchars($blog['title']); ?> - Tour Matrix Blog">
+    <meta property="twitter:description" content="<?php echo htmlspecialchars($blog['title']); ?>. Read more on Tour Matrix Blog about travel technology and tour operations.">
+    <meta property="twitter:image" content="<?php echo htmlspecialchars($blog['image']); ?>">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -49,18 +68,21 @@ foreach ($allBlogs as $b) {
         <div class="mx-header__container">
             <!-- Logo -->
             <div class="mx-header__logo">
-                <img src="assets/images/logo.png" alt="Tour Matrix" />
+                <a href="index.html">
+                    <img src="assets/images/logo.png" class="mx-header__logo-dark" alt="Tour Matrix" />
+                    <img src="assets/images/mx-bridge-logo-white-2.png" class="mx-header__logo-white" alt="Tour Matrix" />
+                </a>
             </div>
 
             <!-- Navigation (used for both mobile & desktop) -->
             <ul class="mx-header__nav">
-                <li><a href="#" class="mx-header__nav-item">Home</a></li>
-                <li><a href="#challenges" class="mx-header__nav-item">Challenges</a></li>
-                <li><a href="#features" class="mx-header__nav-item">Features</a></li>
-                <li><a href="#contact-us" class="mx-header__nav-item">Software Updates <span
-                            class="mx-header__nav-item-info"></span></a></li>
-                            <li><a href="blog-list.php" class="mx-header__nav-item">Blogs</a></li>
-                <li><a href="#contact-us" class="mx-header__nav-item">Contact Us</a></li>
+                <li><a href="index.html" class="mx-header__nav-item">Home</a></li>
+                <li><a href="index.html#challenges" class="mx-header__nav-item">Challenges</a></li>
+                <li><a href="index.html#features" class="mx-header__nav-item">Features</a></li>
+                <!-- <li><a href="index.html#contact-us" class="mx-header__nav-item">Software Updates <span
+                            class="mx-header__nav-item-info"></span></a></li> -->
+                <li><a href="blog-list.php" class="mx-header__nav-item">Blogs</a></li>
+                <li><a href="index.html#contact-us" class="mx-header__nav-item">Contact Us</a></li>
             </ul>
 
             <div class="mx-header__right-area-mobile">
@@ -161,7 +183,7 @@ foreach ($allBlogs as $b) {
                     <p>Our Matrix is an affordable back-office automation tool for tour operators, built to cut errors,
                         speed up workflows, and help you focus on creating better travel experiences.</p>
                     <div class="mx-footer__social">
-                        <a href="https://www.facebook.com/tourmatrix" class="mx-footer__social-item" target="_blank">
+                        <a href="https://www.facebook.com/tourmatrix/" class="mx-footer__social-item" target="_blank">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -170,7 +192,7 @@ foreach ($allBlogs as $b) {
                             </svg>
 
                         </a>
-                        <a href="https://www.instagram.com/tourmatrix/" class="mx-footer__social-item" target="_blank">
+                        <a href="https://www.instagram.com/tourmatrix.in/" class="mx-footer__social-item" target="_blank">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -179,7 +201,7 @@ foreach ($allBlogs as $b) {
                             </svg>
 
                         </a>
-                        <a href="https://www.linkedin.com/company/itinges-technologies-pvt-ltd"
+                        <a href="https://www.linkedin.com/company/64661218/admin/dashboard/"
                             class="mx-footer__social-item" target="_blank">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -189,7 +211,7 @@ foreach ($allBlogs as $b) {
                             </svg>
 
                         </a>
-                        <a href="https://www.youtube.com/@tourmatrixbridge3863/videos" class="mx-footer__social-item"
+                        <a href="https://www.youtube.com/@tourmatrix" class="mx-footer__social-item"
                             target="_blank">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -279,6 +301,21 @@ foreach ($allBlogs as $b) {
         </div>
     </section>
 
+    <a href="https://wa.me/919946222444" target="_blank" class="mx-whatsapp-float">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_2_6)">
+<path d="M27.2451 4.647C24.239 1.65212 20.24 0.0016875 15.9839 0C11.7373 0 7.73194 1.64894 4.70606 4.64313C1.67481 7.64225 0.0039375 11.6281 0 15.8518V15.8596C0.0005 18.4159 0.672125 20.9948 1.947 23.3488L0.04375 32L8.7945 30.0095C11.0108 31.1264 13.4837 31.7153 15.9779 31.7163H15.9842C20.2301 31.7163 24.2354 30.0671 27.2617 27.0728C30.2957 24.0711 31.9674 20.0903 31.9692 15.864C31.9705 11.6675 30.293 7.68381 27.2452 4.647H27.2451ZM15.9839 29.2188H15.9782C13.7387 29.2177 11.5197 28.6555 9.5615 27.5923L9.14775 27.3677L3.32888 28.6912L4.59275 22.947L4.34912 22.5269C3.13769 20.4377 2.4975 18.1316 2.4975 15.8569C2.50212 8.49438 8.55144 2.4975 15.9833 2.4975C19.5737 2.499 22.9472 3.89088 25.4824 6.41625C28.0559 8.98069 29.4726 12.3357 29.4714 15.8633C29.4684 23.2276 23.4179 29.2188 15.9839 29.2188Z" fill="white"/>
+<path d="M11.6345 8.86644H10.9339C10.6899 8.86644 10.2939 8.95775 9.959 9.32225C9.62375 9.687 8.67918 10.5686 8.67918 12.3616C8.67918 14.1546 9.9895 15.8869 10.1721 16.1304C10.355 16.3735 12.7014 20.1704 16.4177 21.6311C19.5064 22.845 20.135 22.6035 20.8052 22.5427C21.4756 22.4821 22.9685 21.6614 23.2732 20.8106C23.5779 19.9597 23.5779 19.2303 23.4866 19.0779C23.395 18.926 23.1511 18.8349 22.7856 18.6529C22.4199 18.4704 20.6279 17.574 20.2927 17.4521C19.9575 17.3308 19.7139 17.27 19.47 17.635C19.2261 17.9993 18.5081 18.8421 18.2947 19.0852C18.0816 19.3286 17.8682 19.3591 17.5024 19.1768C17.1367 18.9939 15.9712 18.6023 14.5744 17.3611C13.4873 16.395 12.7329 15.1631 12.5195 14.7983C12.3064 14.4338 12.4968 14.2366 12.6801 14.0547C12.8445 13.8916 13.0664 13.6684 13.2492 13.4558C13.4319 13.2429 13.4839 13.0911 13.6059 12.8479C13.7278 12.6047 13.6667 12.3919 13.5754 12.2098C13.4839 12.0273 12.7822 10.2254 12.457 9.50463H12.4572C12.1834 8.89775 11.895 8.87713 11.6345 8.86644Z" fill="white"/>
+</g>
+<defs>
+<clipPath id="clip0_2_6">
+<rect width="32" height="32" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+        <span>Chat with us</span>
+    </a>
     <script src="assets/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 </body>
