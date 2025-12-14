@@ -257,6 +257,7 @@ $currentBlogs = array_slice($allBlogs, $offset, $perPage);
             <div class="mx-footer__item">
                 <h3>Quick links</h3>
                 <div class="mx-footer__links">
+                    <a href="blog-list.php" class="mx-footer__links-item">Blogs</a>
                     <a href="https://bridge.tourmatrix.in/index.php?r=user/about-us" class="mx-footer__links-item"
                         target="_blank">About Us</a>
                     <a href="https://bridge.tourmatrix.in/index.php?r=user/refund-policy" class="mx-footer__links-item"

@@ -277,8 +277,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // scroll section image change
-const cards = document.querySelectorAll('.mx-card--list');
+const cards = document.querySelectorAll('.mx-solution .mx-card--list');
 const images = document.querySelectorAll('.mx-solution__image--item');
+
+const setActive = (index) => {
+  cards.forEach((c) => c.classList.remove("active"));
+  images.forEach((i) => i.classList.remove("active"));
+
+  if (cards[index]) cards[index].classList.add("active");
+  if (images[index]) images[index].classList.add("active");
+};
 
 window.addEventListener('scroll', () => {
   cards.forEach((card, index) => {
@@ -287,12 +295,14 @@ window.addEventListener('scroll', () => {
 
     // When card enters the visible area (around 1/3 of screen)
     if (rect.top < windowHeight * 0.7 && rect.bottom > windowHeight * 0.3) {
-      // Activate this card and image
-      cards.forEach(c => c.classList.remove('active'));
-      images.forEach(i => i.classList.remove('active'));
-      card.classList.add('active');
-      if (images[index]) images[index].classList.add('active');
+      setActive(index);
     }
+  });
+});
+
+cards.forEach((card, index) => {
+  card.addEventListener('click', () => {
+    setActive(index);
   });
 });
 
