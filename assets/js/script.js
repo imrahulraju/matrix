@@ -398,4 +398,145 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+// Form
+
+// Contact Form Handler
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.querySelector('.mx-form');
+
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Get form data
+    const nameInput = document.getElementById('name');
+    const mobileInput = document.getElementById('mobile');
+    const emailInput = document.getElementById('email');
+    const companyInput = document.getElementById('company');
+    const submitBtn = contactForm.querySelector('.mx-form__btn');
+
+    // Basic validation
+    if (!validateForm(nameInput, mobileInput, emailInput, companyInput)) {
+      return;
+    }
+
+    // Prepare form data
+    const formData = {
+      name: nameInput.value.trim(),
+      email: emailInput.value.trim(),
+      phone1: mobileInput.value.trim(),
+      company: companyInput.value.trim(),
+      source_name: "Website"
+    };
+
+    // Show loading state
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    try {
+      // Submit to API
+      const response = await fetch('https://admin1.tourmatrix.in/api/leads/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Success feedback
+        alert('Thank you! Your inquiry has been submitted.');
+
+        // Reset form
+        contactForm.reset();
+
+        // Remove any error styles
+        removeErrorStyles(nameInput, mobileInput, emailInput, companyInput);
+      } else {
+        // Handle API error
+        alert('Sorry, there was an error submitting your message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Sorry, there was an error submitting your message. Please check your connection and try again.');
+    } finally {
+      // Restore button
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  });
+
+  // Form validation function
+  function validateForm(nameInput, mobileInput, emailInput, companyInput) {
+    let isValid = true;
+
+    // Remove previous error styles
+    removeErrorStyles(nameInput, mobileInput, emailInput, companyInput);
+
+    // Validate name
+    if (!nameInput.value.trim()) {
+      showFieldError(nameInput, 'Name is required');
+      isValid = false;
+    }
+
+    // Validate mobile
+    if (!mobileInput.value.trim()) {
+      showFieldError(mobileInput, 'Mobile number is required');
+      isValid = false;
+    } else if (!/^[\+]?[0-9\s\-\(\)]{10,}$/.test(mobileInput.value.trim())) {
+      showFieldError(mobileInput, 'Please enter a valid mobile number');
+      isValid = false;
+    }
+
+    // Validate email
+    if (!emailInput.value.trim()) {
+      showFieldError(emailInput, 'Email address is required');
+      isValid = false;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+      showFieldError(emailInput, 'Please enter a valid email address');
+      isValid = false;
+    }
+
+    // Validate company
+    if (!companyInput.value.trim()) {
+      showFieldError(companyInput, 'Company name is required');
+      isValid = false;
+    }
+
+    return isValid;
+  }
+
+  // Show field error
+  function showFieldError(input, message) {
+    input.style.borderColor = '#e74c3c';
+    input.style.backgroundColor = '#fdf2f2';
+
+    // Create or update error message
+    let errorEl = input.parentNode.querySelector('.field-error');
+    if (!errorEl) {
+      errorEl = document.createElement('span');
+      errorEl.className = 'field-error';
+      errorEl.style.cssText = 'color: #e74c3c; font-size: 0.875rem; margin-top: 0.25rem; display: block;';
+      input.parentNode.appendChild(errorEl);
+    }
+    errorEl.textContent = message;
+  }
+
+  // Remove error styles
+  function removeErrorStyles(...inputs) {
+    inputs.forEach(input => {
+      input.style.borderColor = '';
+      input.style.backgroundColor = '';
+
+      const errorEl = input.parentNode.querySelector('.field-error');
+      if (errorEl) {
+        errorEl.remove();
+      }
+    });
+  }
+});
+
+
 

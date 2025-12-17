@@ -32,6 +32,15 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4WC6HVX7V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-G4WC6HVX7V');
+    </script>
 </head>
 
 <body>
@@ -1311,8 +1320,8 @@
 
                     <div class="mx-form__row">
                         <div class="mx-field mx-field--full">
-                            <textarea id="message" class="mx-field__textarea" placeholder=" "></textarea>
-                            <label for="message" class="mx-field__label">Enter your message</label>
+                            <input type="text" id="company" class="mx-field__input" placeholder=" " />
+                            <label for="company" class="mx-field__label">Company name/Message</label>
                         </div>
                     </div>
 
