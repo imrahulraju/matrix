@@ -385,7 +385,15 @@ requireLogin();
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
+            .then(async response => {
+                const text = await response.text();
+                try {
+                    return JSON.parse(text);
+                } catch (e) {
+                    console.error('Server response:', text);
+                    throw new Error('Server error: ' + text.substring(0, 200)); 
+                }
+            })
             .then(data => {
                 if (data.success) {
                     const url = data.url;
@@ -396,13 +404,13 @@ requireLogin();
                     previewImg.src = '../' + url;
                     previewContainer.style.display = 'block';
                 } else {
-                    alert('Upload failed: ' + data.error);
+                    alert('Upload failed: ' + (data.error || 'Unknown error'));
                     e.target.value = ''; // Reset input
                 }
             })
             .catch(err => {
                 console.error(err);
-                alert('Upload failed due to a network error.');
+                alert('Upload failed: ' + err.message);
             });
         });
 
