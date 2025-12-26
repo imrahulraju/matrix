@@ -44,6 +44,16 @@ $currentBlogs = array_slice($allBlogs, $offset, $perPage);
 
     <link rel="canonical" href="https://tourmatrix.in/blog-list.php">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4WC6HVX7V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-G4WC6HVX7V');
+    </script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
 
     <style>

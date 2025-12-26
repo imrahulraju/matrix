@@ -58,6 +58,16 @@ foreach ($allBlogs as $b) {
 
     <link rel="icon" type="image/png" href="assets/images/favicon.png">
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G4WC6HVX7V"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-G4WC6HVX7V');
+    </script>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" />
 
     <link rel="stylesheet" href="assets/css/style.css" />
