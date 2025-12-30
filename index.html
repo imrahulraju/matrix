@@ -47,7 +47,7 @@
         !function (f, b, e, v, n, t, s) {
             if (f.fbq) return; n = f.fbq = function () {
                 n.callMethod ?
-                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
             };
             if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
             n.queue = []; t = b.createElement(e); t.async = !0;
@@ -1310,6 +1310,19 @@
             </div>
         </div>
     </section>
+    <section class="mx-blog mx-bg-light-blue" id="blogs">
+        <div class="mx-container">
+            <h2 class="mx-title">Latest Updates</h2>
+            <p class="mx-subtitle">Stay updated with the latest trends and news in the travel industry.</p>
+            <div class="mx-blog__wrapper" id="blog-container">
+                <!-- Blog items will be injected here -->
+            </div>
+            <div class="mx-btn-ftr" style="margin-top: 40px; text-align: center;">
+                <a href="blog-list.php" class="mx-btn">View All Blogs</a>
+            </div>
+        </div>
+    </section>
+
     <section class="mx-forms mx-bg-gradiant-dark" id="contact-us" data-animate="true" data-animate-speed="0.6"
         data-animate-duration="1">
         <div class="mx-container">
@@ -1823,6 +1836,8 @@
         <span>Chat with us</span>
     </a>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/blog-data.js"></script>
+    <script src="assets/js/blog.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
 </body>
 
