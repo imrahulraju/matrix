@@ -3,27 +3,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!blogContainer) return;
 
-    // Use global blogData variable if access to local file fails
-    // In a real environment with a server, we could try fetch first, but for local file support,
-    // using the JS variable is safer and more reliable.
-    const data = (typeof blogData !== 'undefined') ? blogData : [];
+    // Priority 1: Try to fetch from JSON (Best for Server)
+    fetch('assets/data/blogs.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(fetchedData => {
+            renderBlogs(fetchedData, blogContainer);
+        })
+        .catch(error => {
+            console.warn('Fetch failed, falling back to local data:', error);
 
-    if (!data || data.length === 0) {
-        // Only try fetch if the global variable isn't there, as a last resort
-        fetch('assets/data/blogs.json')
-            .then(response => response.json())
-            .then(fetchedData => {
-                renderBlogs(fetchedData, blogContainer);
-            })
-            .catch(error => {
-                console.error('Error fetching blog data:', error);
-                // Don't show error to user immediately if we can avoid it, 
-                // but since we are here, both methods failed.
+            // Priority 2: Fallback to global variable (Best for Local/offline)
+            const fallbackData = (typeof blogData !== 'undefined') ? blogData : [];
+
+            if (fallbackData.length > 0) {
+                renderBlogs(fallbackData, blogContainer);
+            } else {
                 blogContainer.innerHTML = '<p>No blogs found.</p>';
-            });
-    } else {
-        renderBlogs(data, blogContainer);
-    }
+            }
+        });
 });
 
 function renderBlogs(data, container) {
@@ -55,7 +57,7 @@ function renderBlogs(data, container) {
                 <div class="mx-card__description">
                     <p style="font-size: 14px; color: #51597E; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${blog.excerpt}</p>
                 </div>
-                <a href="blog-details.php?id=${blog.id}" class="mx-btn mx-btn--small" style="margin-top: 16px; display: inline-block;">Read More</a>
+                <a href="blog-detail.php?id=${blog.id}" class="mx-btn mx-btn--small" style="margin-top: 16px; display: inline-block;">Read More</a>
             </div>
         `;
 
